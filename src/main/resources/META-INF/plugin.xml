@@ -1,0 +1,25 @@
+<idea-plugin>
+  <id>com.chriscarini.jetbrains.git-push-reminder-jetbrains-plugin</id>
+  <name>Git Push Reminder</name>
+  <vendor url="https://jetbrains.chriscarini.com">Chris Carini</vendor>
+
+  <description><![CDATA[
+    A plugin for JetBrains IDEs which detects and provides a friendly reminder when a project is closed and there are commits that have not yet been pushed.
+    ]]></description>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>Git4Idea</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <projectCloseHandler implementation="com.chriscarini.jetbrains.gitpushreminder.GitPushReminder"/>
+
+    <applicationService
+            serviceImplementation="com.chriscarini.jetbrains.gitpushreminder.settings.SettingsManager"/>
+
+    <applicationConfigurable
+        instance="com.chriscarini.jetbrains.gitpushreminder.settings.SettingsConfigurable"/>
+
+  </extensions>
+</idea-plugin>
