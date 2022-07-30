@@ -6,7 +6,6 @@
 ### Added
 
 ### Changed
-- Improve project close dialog ([#9](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/pull/9))
 
 ### Deprecated
 
@@ -15,6 +14,13 @@
 ### Fixed
 
 ### Security
+
+## [0.0.3] - 2022-07-30
+### Changed
+- Improve project close dialog ([#9](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/pull/9))
+
+### Removed
+- `Prevent closing project` setting (as part of the improved project close dialog, [#9](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/pull/9))
 
 ## [0.0.2] - 2022-07-29
 ### Changed
