@@ -6,6 +6,7 @@
 ### Added
 
 ### Changed
+- Improve project close dialog ([#9](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/pull/9))
 
 ### Deprecated
 
