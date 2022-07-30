@@ -5,6 +5,7 @@ import com.chriscarini.jetbrains.gitpushreminder.settings.SettingsManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectCloseHandler;
+import com.intellij.openapi.ui.MessageConstants;
 import com.intellij.openapi.ui.Messages;
 import git4idea.GitLocalBranch;
 import git4idea.GitReference;
@@ -40,23 +41,23 @@ public class GitPushReminder implements ProjectCloseHandler {
         boolean canClose = branchesWithUnpushedCommits.isEmpty();
 
         if (!canClose && SettingsManager.getInstance().getState().showDialog) {
-            Messages.showMessageDialog(
-                project,
+            final int dialogResult = Messages.showOkCancelDialog(project,
                 PluginMessages.get("git.push.reminder.closing.dialog.body.unpushed.branches",
-                    branchesWithUnpushedCommits.stream().map(GitReference::getName).collect(Collectors.joining("</li><li>")),
-                    SettingsManager.getInstance().getState().preventClose ?
-                        PluginMessages.get("git.push.reminder.closing.dialog.body.note") :
-                        ""
+                    branchesWithUnpushedCommits.stream()
+                        .map(GitReference::getName)
+                        .sorted()
+                        .collect(Collectors.joining("</li><li>"))
                 ),
                 PluginMessages.get("git.push.reminder.closing.dialog.title"),
-                SettingsManager.getInstance().getState().preventClose ? Messages.getErrorIcon() : Messages.getWarningIcon()
+                PluginMessages.get("git.push.reminder.closing.dialog.button.close.anyway"),
+                PluginMessages.get("git.push.reminder.closing.dialog.button.keep.project.open"),
+                Messages.getWarningIcon()
             );
+
+            return dialogResult == MessageConstants.OK;
+
         }
 
-        if (SettingsManager.getInstance().getState().preventClose) {
-            // We can close if there are *NO* unpushed commits.
-            return canClose;
-        }
         return true;
     }
 

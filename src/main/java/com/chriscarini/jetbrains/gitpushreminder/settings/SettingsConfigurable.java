@@ -24,7 +24,6 @@ public class SettingsConfigurable implements Configurable {
     private final JBCheckBox checkAllBranchesField = new JBCheckBox();
     private final JBCheckBox countUntrackedBranchAsPushedField = new JBCheckBox();
     private final JBCheckBox showDialogField = new JBCheckBox();
-    private final JBCheckBox preventCloseField = new JBCheckBox();
 
     public SettingsConfigurable() {
         buildMainPanel();
@@ -49,10 +48,6 @@ public class SettingsConfigurable implements Configurable {
                 .addSeparator()
                 .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.show.dialog.label"), showDialogField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.show.dialog.tooltip"))
-                .addSeparator()
-                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.prevent.closing.project.label"), preventCloseField)
-                .addTooltip(PluginMessages.get("git.push.reminder.settings.prevent.closing.project.tooltip"))
-                .addSeparator()
                 .getPanel()
         );
     }
@@ -89,7 +84,6 @@ public class SettingsConfigurable implements Configurable {
         settingsState.checkAllBranches = checkAllBranchesField.isSelected();
         settingsState.countUntrackedBranchAsPushed = countUntrackedBranchAsPushedField.isSelected();
         settingsState.showDialog = showDialogField.isSelected();
-        settingsState.preventClose = preventCloseField.isSelected();
 
         return settingsState;
     }
@@ -114,7 +108,6 @@ public class SettingsConfigurable implements Configurable {
         checkAllBranchesField.setSelected(settings.checkAllBranches);
         countUntrackedBranchAsPushedField.setSelected(settings.countUntrackedBranchAsPushed);
         showDialogField.setSelected(settings.showDialog);
-        preventCloseField.setSelected(settings.preventClose);
     }
 
     @NotNull
