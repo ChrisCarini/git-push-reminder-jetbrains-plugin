@@ -4,8 +4,10 @@
 
 ## [Unreleased]
 ### Added
+- A setting was added to enable an unpushed changes dialog when the branch is switched while there are unpushed changes.
 
 ### Changed
+- The plugin now doesn't list an `untilVersion` so it should be able to be installed in future Idea versions.
 
 ### Deprecated
 
