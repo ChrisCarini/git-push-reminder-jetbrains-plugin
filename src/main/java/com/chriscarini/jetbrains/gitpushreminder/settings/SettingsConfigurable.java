@@ -24,6 +24,7 @@ public class SettingsConfigurable implements Configurable {
     private final JBCheckBox checkAllBranchesField = new JBCheckBox();
     private final JBCheckBox countUntrackedBranchAsPushedField = new JBCheckBox();
     private final JBCheckBox showDialogField = new JBCheckBox();
+    private final JBCheckBox showSwitchDialogField = new JBCheckBox();
 
     public SettingsConfigurable() {
         buildMainPanel();
@@ -48,6 +49,9 @@ public class SettingsConfigurable implements Configurable {
                 .addSeparator()
                 .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.show.dialog.label"), showDialogField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.show.dialog.tooltip"))
+                .addSeparator()
+                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.show.switch.dialog.label"), showSwitchDialogField)
+                .addTooltip(PluginMessages.get("git.push.reminder.settings.show.switch.dialog.tooltip"))
                 .getPanel()
         );
     }
@@ -84,6 +88,7 @@ public class SettingsConfigurable implements Configurable {
         settingsState.checkAllBranches = checkAllBranchesField.isSelected();
         settingsState.countUntrackedBranchAsPushed = countUntrackedBranchAsPushedField.isSelected();
         settingsState.showDialog = showDialogField.isSelected();
+        settingsState.showSwitchDialog = showSwitchDialogField.isSelected();
 
         return settingsState;
     }
@@ -108,6 +113,7 @@ public class SettingsConfigurable implements Configurable {
         checkAllBranchesField.setSelected(settings.checkAllBranches);
         countUntrackedBranchAsPushedField.setSelected(settings.countUntrackedBranchAsPushed);
         showDialogField.setSelected(settings.showDialog);
+        showSwitchDialogField.setSelected(settings.showSwitchDialog);
     }
 
     @NotNull
