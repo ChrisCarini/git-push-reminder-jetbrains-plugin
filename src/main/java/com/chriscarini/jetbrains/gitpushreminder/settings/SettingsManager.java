@@ -40,11 +40,13 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
         public boolean checkAllBranches;
         public boolean countUntrackedBranchAsPushed;
         public boolean showDialog;
+        public boolean showSwitchDialog;
 
         public GitPushReminderSettingsState() {
             this.checkAllBranches = false;
             this.countUntrackedBranchAsPushed = false;
             this.showDialog = true;
+            this.showSwitchDialog = false;
         }
 
         @Override
@@ -52,12 +54,15 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             GitPushReminderSettingsState that = (GitPushReminderSettingsState) o;
-            return checkAllBranches == that.checkAllBranches && countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed && showDialog == that.showDialog;
+            return checkAllBranches == that.checkAllBranches &&
+                    countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed &&
+                    showDialog == that.showDialog &&
+                    showSwitchDialog == that.showSwitchDialog;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, showDialog);
+            return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, showDialog, showSwitchDialog);
         }
     }
 }

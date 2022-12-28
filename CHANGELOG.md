@@ -4,6 +4,7 @@
 
 ## [Unreleased]
 ### Added
+- A setting was added to enable an unpushed changes dialog when the branch is switched while there are unpushed changes.
 
 ### Changed
 - Upgrading IntelliJ from 2022.2 to 2022.2.4
