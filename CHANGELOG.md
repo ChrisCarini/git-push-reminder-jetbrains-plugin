@@ -4,11 +4,8 @@
 
 ## [Unreleased]
 ### Added
-- A setting was added to enable an unpushed changes dialog when the branch is switched while there are unpushed changes.
 
 ### Changed
-- Upgrading IntelliJ from 2022.2.4 to 2022.3.0
-- Upgrading IntelliJ from 2022.2 to 2022.2.4
 
 ### Deprecated
 
@@ -17,6 +14,9 @@
 ### Fixed
 
 ### Security
+
+## [0.1.0] - 2022-12-28
+### Added%0D%0A- A setting was added to enable a dialog when the branch is switched while there are unpushed changes - by @nvdweem in https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/pull/47%0D%0A%0A### Changed%0D%0A- Upgrading IntelliJ from 2022.2.4 to 2022.3.0%0D%0A- Upgrading IntelliJ from 2022.2 to 2022.2.4
 
 ## [0.0.3] - 2022-07-30
 ### Changed
