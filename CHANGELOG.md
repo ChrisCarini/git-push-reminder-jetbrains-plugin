@@ -8,7 +8,6 @@
 
 ### Changed
 - Upgrading IntelliJ from 2022.2 to 2022.2.4
-- The plugin now doesn't list an `untilVersion` so it should be able to be installed in future Idea versions.
 
 ### Deprecated
 

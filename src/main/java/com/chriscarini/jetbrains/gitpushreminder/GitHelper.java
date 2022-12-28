@@ -22,16 +22,19 @@ public class GitHelper {
 
     private static final Logger LOG = Logger.getInstance(GitHelper.class);
 
-    static List<RepositoryAndBranch> getBranchesWithUnpushedCommits(Project project, boolean checkAllBranches) {
+    static List<RepositoryAndBranch> getBranchesWithUnpushedCommits(
+            @NotNull final Project project,
+            final boolean checkAllBranches
+    ) {
         return GitRepositoryManager.getInstance(project)
-                                   .getRepositories().stream()
-                                   .map(gitRepository -> {
-                                       if (checkAllBranches) {
-                                           return checkAllBranches(project, gitRepository);
-                                       }
-                                       return checkCurrentBranchOnly(project, gitRepository);
-                                   }).flatMap(Collection::stream)
-                                   .collect(Collectors.toList());
+                .getRepositories().stream()
+                .map(gitRepository -> {
+                    if (checkAllBranches) {
+                        return checkAllBranches(project, gitRepository);
+                    }
+                    return checkCurrentBranchOnly(project, gitRepository);
+                }).flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     @NotNull
@@ -40,10 +43,10 @@ public class GitHelper {
             final GitRepository gitRepository
     ) {
         final Set<RepositoryAndBranch> allBranchesWithUnpushedCommits = gitRepository.getBranches().getLocalBranches()
-                                                                                .stream()
-                                                                                .filter(gitLocalBranch -> isLocalBranchWithUnpushedCommits(project, gitRepository, gitLocalBranch))
-                                                                                .map(branch -> new RepositoryAndBranch(gitRepository, branch))
-                                                                                .collect(Collectors.toSet());
+                .stream()
+                .filter(gitLocalBranch -> isLocalBranchWithUnpushedCommits(project, gitRepository, gitLocalBranch))
+                .map(branch -> new RepositoryAndBranch(gitRepository, branch))
+                .collect(Collectors.toSet());
 
         LOG.debug("allBranchesWithUnpushedCommits: %s", allBranchesWithUnpushedCommits); //NON-NLS
 
