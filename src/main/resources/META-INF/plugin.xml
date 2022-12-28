@@ -22,4 +22,8 @@
         instance="com.chriscarini.jetbrains.gitpushreminder.settings.SettingsConfigurable"/>
 
   </extensions>
+  <projectListeners>
+    <listener topic="com.intellij.openapi.vcs.BranchChangeListener"
+              class="com.chriscarini.jetbrains.gitpushreminder.GitBranchChangeListener"/>
+  </projectListeners>
 </idea-plugin>
