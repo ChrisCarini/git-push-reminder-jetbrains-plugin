@@ -37,7 +37,7 @@ public class GitBranchChangeListener implements BranchChangeListener {
                     PluginMessages.get("git.push.reminder.switching.dialog.body.unpushed.branches",
                             repositoryAndBranch.branch().getName()
                     ),
-                    PluginMessages.get("git.push.reminder.closing.dialog.title"),
+                    PluginMessages.get("git.push.reminder.closing.dialog.title", ""),
                     PluginMessages.get("git.push.reminder.switching.dialog.button.push"),
                     PluginMessages.get("git.push.reminder.switching.dialog.button.dontpush"),
                     Messages.getWarningIcon()
