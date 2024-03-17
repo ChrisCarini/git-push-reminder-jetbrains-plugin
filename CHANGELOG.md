@@ -13,6 +13,7 @@
 ### Removed
 
 ### Fixed
+- Fix confusing UX when switching branches with unpushed changes on two branches with the same name ([#253](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/issues/253))
 
 ### Security
 

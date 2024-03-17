@@ -25,11 +25,21 @@ public class GitPushReminder implements ProjectCloseHandler {
             final int dialogResult = Messages.showOkCancelDialog(project,
                 PluginMessages.get("git.push.reminder.closing.dialog.body.unpushed.branches",
                     branchesWithUnpushedCommits.stream()
-                        .map(repoAndBranch -> repoAndBranch.branch().getName())
-                        .sorted()
+                            .sorted((o1, o2) -> {
+                                if (o1.repository().getRoot().getName().equals(o2.repository().getRoot().getName())) {
+                                    return o1.branch().getName().compareTo(o2.branch().getName());
+                                }
+                                return o1.repository().getRoot().getName().compareTo(o2.repository().getRoot().getName());
+                            })
+                        .map(repoAndBranch -> String.format(
+                                "%s (%s)", //NON-NLS
+                                repoAndBranch.branch().getName(),
+                                repoAndBranch.repository().getRoot().getName()
+                            )
+                         )
                         .collect(Collectors.joining("</li><li>"))
                 ),
-                PluginMessages.get("git.push.reminder.closing.dialog.title"),
+                PluginMessages.get("git.push.reminder.closing.dialog.title", branchesWithUnpushedCommits.size()),
                 PluginMessages.get("git.push.reminder.closing.dialog.button.close.anyway"),
                 PluginMessages.get("git.push.reminder.closing.dialog.button.keep.project.open"),
                 Messages.getWarningIcon()
