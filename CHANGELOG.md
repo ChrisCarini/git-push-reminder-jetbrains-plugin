@@ -7,16 +7,22 @@
 ### Added
 
 ### Changed
-- Upgrading IntelliJ from 2023.3.5 to 2023.3.6
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
-- Fix confusing UX when switching branches with unpushed changes on two branches with the same name ([#253](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/issues/253))
 
 ### Security
+
+## [1.2.6] - 2024-03-22
+
+### Changed
+- Upgrading IntelliJ from 2023.3.5 to 2023.3.6
+
+### Fixed
+- Fix confusing UX when switching branches with unpushed changes on two branches with the same name ([#253](https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/issues/253))
 
 ## [1.2.5] - 2024-03-13
 
@@ -150,7 +156,8 @@
 ### Added
 - Initial release.
 
-[Unreleased]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v1.2.5...HEAD
+[Unreleased]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v1.2.6...HEAD
+[1.2.6]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v1.2.2...v1.2.3
