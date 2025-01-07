@@ -37,14 +37,18 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
 
     public static class GitPushReminderSettingsState {
 
+        public boolean allowUncommitedChanges;
+        public boolean allowUntrackedBranches;
+        public boolean allowUntrackedFiles;
         public boolean checkAllBranches;
-        public boolean countUntrackedBranchAsPushed;
         public boolean showDialog;
         public boolean showSwitchDialog;
 
         public GitPushReminderSettingsState() {
+            this.allowUncommitedChanges = false;
+            this.allowUntrackedBranches = false;
+            this.allowUntrackedFiles = false;
             this.checkAllBranches = false;
-            this.countUntrackedBranchAsPushed = false;
             this.showDialog = true;
             this.showSwitchDialog = false;
         }
@@ -54,15 +58,24 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             GitPushReminderSettingsState that = (GitPushReminderSettingsState) o;
-            return checkAllBranches == that.checkAllBranches &&
-                    countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed &&
+            return allowUncommitedChanges == that.allowUncommitedChanges &&
+                    allowUntrackedBranches == that.allowUntrackedBranches &&
+                    allowUntrackedFiles == that.allowUntrackedFiles &&
+                    checkAllBranches == that.checkAllBranches &&
                     showDialog == that.showDialog &&
                     showSwitchDialog == that.showSwitchDialog;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, showDialog, showSwitchDialog);
+            return Objects.hash(
+                    allowUncommitedChanges,
+                    allowUntrackedBranches,
+                    allowUntrackedFiles,
+                    checkAllBranches,
+                    showDialog,
+                    showSwitchDialog
+            );
         }
     }
 }

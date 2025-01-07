@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.intellij.openapi.vcs.FilePath;
+import git4idea.index.GitFileStatus;
 import org.jetbrains.annotations.NotNull;
 
 import com.chriscarini.jetbrains.gitpushreminder.settings.SettingsManager;
@@ -34,6 +36,20 @@ public class GitHelper {
                     }
                     return checkCurrentBranchOnly(project, gitRepository);
                 }).flatMap(Collection::stream)
+                .collect(Collectors.toList());
+    }
+
+    static List<FilePath> getUntrackedFiles(@NotNull final Project project) {
+        return GitRepositoryManager.getInstance(project)
+                .getRepositories().stream()
+                .flatMap(gitRepository -> gitRepository.getUntrackedFilesHolder().getUntrackedFilePaths().stream())
+                .collect(Collectors.toList());
+    }
+
+    static List<GitFileStatus> getFilesWithUncommittedChanges(@NotNull final Project project) {
+        return GitRepositoryManager.getInstance(project)
+                .getRepositories().stream()
+                .flatMap(gitRepository -> gitRepository.getStagingAreaHolder().getAllRecords().stream())
                 .collect(Collectors.toList());
     }
 
@@ -76,7 +92,7 @@ public class GitHelper {
     ) {
         final GitRemoteBranch trackedBranch = currentBranch.findTrackedBranch(gitRepository);
         if (trackedBranch == null) {
-            return !SettingsManager.getInstance().getState().countUntrackedBranchAsPushed;
+            return !SettingsManager.getInstance().getState().allowUntrackedBranches;
         }
 
         final String currentBranchName = currentBranch.getName();
