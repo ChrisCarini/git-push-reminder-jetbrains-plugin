@@ -37,6 +37,28 @@ public class GitHelper {
                 .collect(Collectors.toList());
     }
 
+    static int countUntrackedFiles(@NotNull final Project project) {
+        if (SettingsManager.getInstance().getState().ignoreUntrackedFilesField) {
+            return 0;
+        } else {
+            return GitRepositoryManager.getInstance(project)
+                    .getRepositories().stream()
+                    .mapToInt(gitRepository -> gitRepository.getUntrackedFilesHolder().getUntrackedFilePaths().size())
+                    .sum();
+        }
+    }
+
+    static int countFilesWithUncommittedChanges(@NotNull final Project project) {
+        if (SettingsManager.getInstance().getState().ignoreUncommitedChangesField) {
+            return 0;
+        } else {
+            return GitRepositoryManager.getInstance(project)
+                    .getRepositories().stream()
+                    .mapToInt(gitRepository -> gitRepository.getStagingAreaHolder().getAllRecords().size())
+                    .sum();
+        }
+    }
+
     @NotNull
     private static Set<RepositoryAndBranch> checkAllBranches(
             @NotNull final Project project,

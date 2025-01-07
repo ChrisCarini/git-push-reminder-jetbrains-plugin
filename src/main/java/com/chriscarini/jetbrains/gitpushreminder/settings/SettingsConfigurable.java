@@ -23,6 +23,8 @@ public class SettingsConfigurable implements Configurable {
 
     private final JBCheckBox checkAllBranchesField = new JBCheckBox();
     private final JBCheckBox countUntrackedBranchAsPushedField = new JBCheckBox();
+    private final JBCheckBox ignoreUntrackedFilesField = new JBCheckBox();
+    private final JBCheckBox ignoreUncommitedChangesField = new JBCheckBox();
     private final JBCheckBox showDialogField = new JBCheckBox();
     private final JBCheckBox showSwitchDialogField = new JBCheckBox();
 
@@ -46,6 +48,12 @@ public class SettingsConfigurable implements Configurable {
                 .addSeparator()
                 .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.allow.untracked.branches.label"), countUntrackedBranchAsPushedField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.allow.untracked.branches.tooltip"))
+                .addSeparator()
+                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.ignore.untracked.files.label"), ignoreUntrackedFilesField)
+                .addTooltip(PluginMessages.get("git.push.reminder.settings.ignore.untracked.files.tooltip"))
+                .addSeparator()
+                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.ignore.uncommitted.changes.label"), ignoreUncommitedChangesField)
+                .addTooltip(PluginMessages.get("git.push.reminder.settings.ignore.uncommitted.changes.tooltip"))
                 .addSeparator()
                 .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.show.dialog.label"), showDialogField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.show.dialog.tooltip"))
@@ -87,7 +95,9 @@ public class SettingsConfigurable implements Configurable {
 
         settingsState.checkAllBranches = checkAllBranchesField.isSelected();
         settingsState.countUntrackedBranchAsPushed = countUntrackedBranchAsPushedField.isSelected();
-        settingsState.showDialog = showDialogField.isSelected();
+        settingsState.ignoreUntrackedFilesField = ignoreUntrackedFilesField.isSelected();
+        settingsState.ignoreUncommitedChangesField = ignoreUncommitedChangesField.isSelected();
+        settingsState.showDialogOnUnpushedCommits = showDialogField.isSelected();
         settingsState.showSwitchDialog = showSwitchDialogField.isSelected();
 
         return settingsState;
@@ -112,7 +122,9 @@ public class SettingsConfigurable implements Configurable {
 
         checkAllBranchesField.setSelected(settings.checkAllBranches);
         countUntrackedBranchAsPushedField.setSelected(settings.countUntrackedBranchAsPushed);
-        showDialogField.setSelected(settings.showDialog);
+        ignoreUntrackedFilesField.setSelected(settings.ignoreUntrackedFilesField);
+        ignoreUncommitedChangesField.setSelected(settings.ignoreUncommitedChangesField);
+        showDialogField.setSelected(settings.showDialogOnUnpushedCommits);
         showSwitchDialogField.setSelected(settings.showSwitchDialog);
     }
 
