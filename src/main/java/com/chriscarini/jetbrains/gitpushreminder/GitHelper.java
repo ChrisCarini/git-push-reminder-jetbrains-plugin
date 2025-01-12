@@ -51,12 +51,11 @@ public class GitHelper {
     static int countFilesWithUncommittedChanges(@NotNull final Project project) {
         if (SettingsManager.getInstance().getState().ignoreUncommitedChangesField) {
             return 0;
-        } else {
-            return GitRepositoryManager.getInstance(project)
-                    .getRepositories().stream()
-                    .mapToInt(gitRepository -> gitRepository.getStagingAreaHolder().getAllRecords().size())
-                    .sum();
         }
+        return GitRepositoryManager.getInstance(project)
+                .getRepositories().stream()
+                .mapToInt(gitRepository -> gitRepository.getStagingAreaHolder().getAllRecords().size())
+                .sum();
     }
 
     @NotNull
