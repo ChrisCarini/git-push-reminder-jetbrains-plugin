@@ -23,18 +23,18 @@ public class GitHelper {
     private static final Logger LOG = Logger.getInstance(GitHelper.class);
 
     static List<RepositoryAndBranch> getBranchesWithUnpushedCommits(
-            @NotNull final Project project,
-            final boolean checkAllBranches
+        @NotNull final Project project,
+        final boolean checkAllBranches
     ) {
         return GitRepositoryManager.getInstance(project)
-                .getRepositories().stream()
-                .map(gitRepository -> {
-                    if (checkAllBranches) {
-                        return checkAllBranches(project, gitRepository);
-                    }
-                    return checkCurrentBranchOnly(project, gitRepository);
-                }).flatMap(Collection::stream)
-                .collect(Collectors.toList());
+            .getRepositories().stream()
+            .map(gitRepository -> {
+                if (checkAllBranches) {
+                    return checkAllBranches(project, gitRepository);
+                }
+                return checkCurrentBranchOnly(project, gitRepository);
+            }).flatMap(Collection::stream)
+            .collect(Collectors.toList());
     }
 
     static int countUntrackedFiles(@NotNull final Project project) {
@@ -42,9 +42,9 @@ public class GitHelper {
             return 0;
         } else {
             return GitRepositoryManager.getInstance(project)
-                    .getRepositories().stream()
-                    .mapToInt(gitRepository -> gitRepository.getUntrackedFilesHolder().getUntrackedFilePaths().size())
-                    .sum();
+                .getRepositories().stream()
+                .mapToInt(gitRepository -> gitRepository.getUntrackedFilesHolder().getUntrackedFilePaths().size())
+                .sum();
         }
     }
 
@@ -60,14 +60,14 @@ public class GitHelper {
 
     @NotNull
     private static Set<RepositoryAndBranch> checkAllBranches(
-            @NotNull final Project project,
-            final GitRepository gitRepository
+        @NotNull final Project project,
+        final GitRepository gitRepository
     ) {
         final Set<RepositoryAndBranch> allBranchesWithUnpushedCommits = gitRepository.getBranches().getLocalBranches()
-                .stream()
-                .filter(gitLocalBranch -> isLocalBranchWithUnpushedCommits(project, gitRepository, gitLocalBranch))
-                .map(branch -> new RepositoryAndBranch(gitRepository, branch))
-                .collect(Collectors.toSet());
+            .stream()
+            .filter(gitLocalBranch -> isLocalBranchWithUnpushedCommits(project, gitRepository, gitLocalBranch))
+            .map(branch -> new RepositoryAndBranch(gitRepository, branch))
+            .collect(Collectors.toSet());
 
         LOG.debug("allBranchesWithUnpushedCommits: %s", allBranchesWithUnpushedCommits); //NON-NLS
 
@@ -76,8 +76,8 @@ public class GitHelper {
 
     @NotNull
     private static Set<RepositoryAndBranch> checkCurrentBranchOnly(
-            @NotNull final Project project,
-            @NotNull final GitRepository gitRepository
+        @NotNull final Project project,
+        @NotNull final GitRepository gitRepository
     ) {
         final GitLocalBranch currentBranch = gitRepository.getCurrentBranch();
 
@@ -91,9 +91,9 @@ public class GitHelper {
 
     @NotNull
     private static Boolean isLocalBranchWithUnpushedCommits(
-            @NotNull final Project project,
-            @NotNull final GitRepository gitRepository,
-            @NotNull final GitLocalBranch currentBranch
+        @NotNull final Project project,
+        @NotNull final GitRepository gitRepository,
+        @NotNull final GitLocalBranch currentBranch
     ) {
         final GitRemoteBranch trackedBranch = currentBranch.findTrackedBranch(gitRepository);
         if (trackedBranch == null) {
@@ -105,10 +105,10 @@ public class GitHelper {
         final boolean outgoingCommits = GitBranchIncomingOutgoingManager.getInstance(project).hasOutgoingFor(gitRepository, currentBranchName);
 
         LOG.info(String.format(
-                "Project: %s  -  Outgoing Commits: %5s  -  Current Branch: %s", //NON-NLS
-                project.getName(),
-                outgoingCommits,
-                currentBranchName
+            "Project: %s  -  Outgoing Commits: %5s  -  Current Branch: %s", //NON-NLS
+            project.getName(),
+            outgoingCommits,
+            currentBranchName
         ));
 
         return outgoingCommits;

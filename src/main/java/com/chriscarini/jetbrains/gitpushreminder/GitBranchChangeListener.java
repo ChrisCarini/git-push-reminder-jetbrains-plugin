@@ -34,21 +34,21 @@ public class GitBranchChangeListener implements BranchChangeListener {
         if (showMessage) {
             RepositoryAndBranch repositoryAndBranch = branchesWithUnpushedCommits.get(0);
             final int dialogResult = Messages.showOkCancelDialog(project,
-                    PluginMessages.get("git.push.reminder.switching.dialog.body.unpushed.branches",
-                            repositoryAndBranch.branch().getName()
-                    ),
-                    PluginMessages.get("git.push.reminder.closing.dialog.title", ""),
-                    PluginMessages.get("git.push.reminder.switching.dialog.button.push"),
-                    PluginMessages.get("git.push.reminder.switching.dialog.button.dontpush"),
-                    Messages.getWarningIcon()
+                PluginMessages.get("git.push.reminder.switching.dialog.body.unpushed.branches",
+                    repositoryAndBranch.branch().getName()
+                ),
+                PluginMessages.get("git.push.reminder.closing.dialog.title", ""),
+                PluginMessages.get("git.push.reminder.switching.dialog.button.push"),
+                PluginMessages.get("git.push.reminder.switching.dialog.button.dontpush"),
+                Messages.getWarningIcon()
             );
 
             if (dialogResult == 0) {
                 new VcsPushDialog(project,
-                        List.of(repositoryAndBranch.repository()),
-                        List.of(repositoryAndBranch.repository()),
-                        repositoryAndBranch.repository(),
-                        GitPushSource.create(repositoryAndBranch.branch())
+                    List.of(repositoryAndBranch.repository()),
+                    List.of(repositoryAndBranch.repository()),
+                    repositoryAndBranch.repository(),
+                    GitPushSource.create(repositoryAndBranch.branch())
                 ).show();
             }
         }

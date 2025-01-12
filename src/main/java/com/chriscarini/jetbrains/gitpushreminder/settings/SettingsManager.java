@@ -61,19 +61,19 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
             if (o == null || getClass() != o.getClass()) return false;
             GitPushReminderSettingsState that = (GitPushReminderSettingsState) o;
             return checkAllBranches == that.checkAllBranches &&
-                    countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed &&
-                    showDialogOnUnpushedCommits == that.showDialogOnUnpushedCommits &&
-                    ignoreUntrackedFilesField == that.ignoreUntrackedFilesField &&
-                    ignoreUncommitedChangesField == that.ignoreUncommitedChangesField &&
-                    showDialogOnUntrackedFiledOrUncommittedChanges == that.showDialogOnUntrackedFiledOrUncommittedChanges &&
-                    showSwitchDialog == that.showSwitchDialog;
+                countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed &&
+                showDialogOnUnpushedCommits == that.showDialogOnUnpushedCommits &&
+                ignoreUntrackedFilesField == that.ignoreUntrackedFilesField &&
+                ignoreUncommitedChangesField == that.ignoreUncommitedChangesField &&
+                showDialogOnUntrackedFiledOrUncommittedChanges == that.showDialogOnUntrackedFiledOrUncommittedChanges &&
+                showSwitchDialog == that.showSwitchDialog;
         }
 
         @Override
         public int hashCode() {
             return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, ignoreUntrackedFilesField,
-                    ignoreUncommitedChangesField, showDialogOnUnpushedCommits,
-                    showDialogOnUntrackedFiledOrUncommittedChanges, showSwitchDialog);
+                ignoreUncommitedChangesField, showDialogOnUnpushedCommits,
+                showDialogOnUntrackedFiledOrUncommittedChanges, showSwitchDialog);
         }
     }
 }
