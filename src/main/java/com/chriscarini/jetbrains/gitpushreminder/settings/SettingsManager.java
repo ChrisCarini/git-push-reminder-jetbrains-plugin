@@ -39,8 +39,8 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
 
         public boolean checkAllBranches;
         public boolean countUntrackedBranchAsPushed;
-        public boolean ignoreUntrackedFilesField;
         public boolean ignoreUncommitedChangesField;
+        public boolean ignoreUntrackedFilesField;
         public boolean showDialogOnUnpushedCommits;
         public boolean showDialogOnUntrackedFiledOrUncommittedChanges;
         public boolean showSwitchDialog;
@@ -48,9 +48,9 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
         public GitPushReminderSettingsState() {
             this.checkAllBranches = false;
             this.countUntrackedBranchAsPushed = false;
-            this.showDialogOnUnpushedCommits = true;
-            this.ignoreUntrackedFilesField = false;
             this.ignoreUncommitedChangesField = false;
+            this.ignoreUntrackedFilesField = false;
+            this.showDialogOnUnpushedCommits = true;
             this.showDialogOnUntrackedFiledOrUncommittedChanges = true;
             this.showSwitchDialog = false;
         }
@@ -62,9 +62,9 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
             GitPushReminderSettingsState that = (GitPushReminderSettingsState) o;
             return checkAllBranches == that.checkAllBranches &&
                 countUntrackedBranchAsPushed == that.countUntrackedBranchAsPushed &&
-                showDialogOnUnpushedCommits == that.showDialogOnUnpushedCommits &&
-                ignoreUntrackedFilesField == that.ignoreUntrackedFilesField &&
                 ignoreUncommitedChangesField == that.ignoreUncommitedChangesField &&
+                ignoreUntrackedFilesField == that.ignoreUntrackedFilesField &&
+                showDialogOnUnpushedCommits == that.showDialogOnUnpushedCommits &&
                 showDialogOnUntrackedFiledOrUncommittedChanges == that.showDialogOnUntrackedFiledOrUncommittedChanges &&
                 showSwitchDialog == that.showSwitchDialog;
         }
@@ -72,8 +72,8 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
         @Override
         public int hashCode() {
             return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, ignoreUntrackedFilesField,
-                ignoreUncommitedChangesField, showDialogOnUnpushedCommits,
-                showDialogOnUntrackedFiledOrUncommittedChanges, showSwitchDialog);
+                ignoreUncommitedChangesField, showDialogOnUntrackedFiledOrUncommittedChanges,
+                showDialogOnUnpushedCommits, showSwitchDialog);
         }
     }
 }

@@ -23,8 +23,8 @@ public class SettingsConfigurable implements Configurable {
 
     private final JBCheckBox checkAllBranchesField = new JBCheckBox();
     private final JBCheckBox countUntrackedBranchAsPushedField = new JBCheckBox();
-    private final JBCheckBox ignoreUntrackedFilesField = new JBCheckBox();
     private final JBCheckBox ignoreUncommitedChangesField = new JBCheckBox();
+    private final JBCheckBox ignoreUntrackedFilesField = new JBCheckBox();
     private final JBCheckBox showDialogField = new JBCheckBox();
     private final JBCheckBox showSwitchDialogField = new JBCheckBox();
 
@@ -95,8 +95,8 @@ public class SettingsConfigurable implements Configurable {
 
         settingsState.checkAllBranches = checkAllBranchesField.isSelected();
         settingsState.countUntrackedBranchAsPushed = countUntrackedBranchAsPushedField.isSelected();
-        settingsState.ignoreUntrackedFilesField = ignoreUntrackedFilesField.isSelected();
         settingsState.ignoreUncommitedChangesField = ignoreUncommitedChangesField.isSelected();
+        settingsState.ignoreUntrackedFilesField = ignoreUntrackedFilesField.isSelected();
         settingsState.showDialogOnUnpushedCommits = showDialogField.isSelected();
         settingsState.showSwitchDialog = showSwitchDialogField.isSelected();
 
@@ -122,8 +122,8 @@ public class SettingsConfigurable implements Configurable {
 
         checkAllBranchesField.setSelected(settings.checkAllBranches);
         countUntrackedBranchAsPushedField.setSelected(settings.countUntrackedBranchAsPushed);
-        ignoreUntrackedFilesField.setSelected(settings.ignoreUntrackedFilesField);
         ignoreUncommitedChangesField.setSelected(settings.ignoreUncommitedChangesField);
+        ignoreUntrackedFilesField.setSelected(settings.ignoreUntrackedFilesField);
         showDialogField.setSelected(settings.showDialogOnUnpushedCommits);
         showSwitchDialogField.setSelected(settings.showSwitchDialog);
     }
