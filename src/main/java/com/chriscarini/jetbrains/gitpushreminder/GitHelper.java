@@ -40,12 +40,11 @@ public class GitHelper {
     static int countUntrackedFiles(@NotNull final Project project) {
         if (SettingsManager.getInstance().getState().ignoreUntrackedFilesField) {
             return 0;
-        } else {
-            return GitRepositoryManager.getInstance(project)
-                .getRepositories().stream()
-                .mapToInt(gitRepository -> gitRepository.getUntrackedFilesHolder().getUntrackedFilePaths().size())
-                .sum();
         }
+        return GitRepositoryManager.getInstance(project)
+            .getRepositories().stream()
+            .mapToInt(gitRepository -> gitRepository.getUntrackedFilesHolder().getUntrackedFilePaths().size())
+            .sum();
     }
 
     static int countFilesWithUncommittedChanges(@NotNull final Project project) {
