@@ -18,7 +18,7 @@ public class GitPushReminder implements ProjectCloseHandler {
         if (SettingsManager.getInstance().getState().showDialogOnUnpushedCommits && doNotCloseOnUnpushedCommits(project)) {
             return false;
         }
-        if (SettingsManager.getInstance().getState().showDialogOnUntrackedFilesOrUncommittedChanges && doNotCloseOnUntrackedFilesOrUncommitedChanges(project)) {
+        if (doNotCloseOnUntrackedFilesOrUncommitedChanges(project)) {
             return false;
         }
 
