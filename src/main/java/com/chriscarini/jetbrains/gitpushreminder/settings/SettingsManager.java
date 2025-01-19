@@ -42,7 +42,7 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
         public boolean ignoreUncommitedChangesField;
         public boolean ignoreUntrackedFilesField;
         public boolean showDialogOnUnpushedCommits;
-        public boolean showDialogOnUntrackedFiledOrUncommittedChanges;
+        public boolean showDialogOnUntrackedFilesOrUncommittedChanges;
         public boolean showSwitchDialog;
 
         public GitPushReminderSettingsState() {
@@ -51,7 +51,7 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
             this.ignoreUncommitedChangesField = false;
             this.ignoreUntrackedFilesField = false;
             this.showDialogOnUnpushedCommits = true;
-            this.showDialogOnUntrackedFiledOrUncommittedChanges = true;
+            this.showDialogOnUntrackedFilesOrUncommittedChanges = true;
             this.showSwitchDialog = false;
         }
 
@@ -65,14 +65,14 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
                 ignoreUncommitedChangesField == that.ignoreUncommitedChangesField &&
                 ignoreUntrackedFilesField == that.ignoreUntrackedFilesField &&
                 showDialogOnUnpushedCommits == that.showDialogOnUnpushedCommits &&
-                showDialogOnUntrackedFiledOrUncommittedChanges == that.showDialogOnUntrackedFiledOrUncommittedChanges &&
+                showDialogOnUntrackedFilesOrUncommittedChanges == that.showDialogOnUntrackedFilesOrUncommittedChanges &&
                 showSwitchDialog == that.showSwitchDialog;
         }
 
         @Override
         public int hashCode() {
             return Objects.hash(checkAllBranches, countUntrackedBranchAsPushed, ignoreUntrackedFilesField,
-                ignoreUncommitedChangesField, showDialogOnUntrackedFiledOrUncommittedChanges,
+                ignoreUncommitedChangesField, showDialogOnUntrackedFilesOrUncommittedChanges,
                 showDialogOnUnpushedCommits, showSwitchDialog);
         }
     }
