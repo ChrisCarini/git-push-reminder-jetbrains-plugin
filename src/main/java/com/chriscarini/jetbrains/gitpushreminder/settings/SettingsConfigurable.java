@@ -94,7 +94,7 @@ public class SettingsConfigurable implements Configurable {
         final SettingsManager.GitPushReminderSettingsState settingsState = new SettingsManager.GitPushReminderSettingsState();
 
         settingsState.checkAllBranches = checkAllBranchesField.isSelected();
-        settingsState.allowUncommitedChanges = allowUncommittedChangesField.isSelected();
+        settingsState.allowUncommittedChanges = allowUncommittedChangesField.isSelected();
         settingsState.allowUntrackedBranches = allowUntrackedBranchField.isSelected();
         settingsState.allowUntrackedFiles = allowUntrackedFilesField.isSelected();
         settingsState.showDialog = showDialogField.isSelected();
@@ -121,7 +121,7 @@ public class SettingsConfigurable implements Configurable {
         }
 
         checkAllBranchesField.setSelected(settings.checkAllBranches);
-        allowUncommittedChangesField.setSelected(settings.allowUncommitedChanges);
+        allowUncommittedChangesField.setSelected(settings.allowUncommittedChanges);
         allowUntrackedBranchField.setSelected(settings.allowUntrackedBranches);
         allowUntrackedFilesField.setSelected(settings.allowUntrackedFiles);
         showDialogField.setSelected(settings.showDialog);

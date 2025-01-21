@@ -75,7 +75,7 @@ public class GitPushReminder implements ProjectCloseHandler {
          *
          *  1. If "Allow uncommitted changes" is UNCHECKED &&& There are uncommitted changes --> Show Dialog
          */
-        if (!SettingsManager.getInstance().getState().allowUncommitedChanges) {
+        if (!SettingsManager.getInstance().getState().allowUncommittedChanges) {
             final List<GitFileStatus> untrackedCommittedFiles = GitHelper.getFilesWithUncommittedChanges(project);
             addToDialogBody(
                     untrackedCommittedFiles,

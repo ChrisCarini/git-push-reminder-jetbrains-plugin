@@ -37,7 +37,7 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
 
     public static class GitPushReminderSettingsState {
 
-        public boolean allowUncommitedChanges;
+        public boolean allowUncommittedChanges;
         public boolean allowUntrackedBranches;
         public boolean allowUntrackedFiles;
         public boolean checkAllBranches;
@@ -45,7 +45,7 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
         public boolean showSwitchDialog;
 
         public GitPushReminderSettingsState() {
-            this.allowUncommitedChanges = false;
+            this.allowUncommittedChanges = false;
             this.allowUntrackedBranches = false;
             this.allowUntrackedFiles = false;
             this.checkAllBranches = false;
@@ -58,7 +58,7 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             GitPushReminderSettingsState that = (GitPushReminderSettingsState) o;
-            return allowUncommitedChanges == that.allowUncommitedChanges &&
+            return allowUncommittedChanges == that.allowUncommittedChanges &&
                     allowUntrackedBranches == that.allowUntrackedBranches &&
                     allowUntrackedFiles == that.allowUntrackedFiles &&
                     checkAllBranches == that.checkAllBranches &&
@@ -69,7 +69,7 @@ public class SettingsManager implements PersistentStateComponent<SettingsManager
         @Override
         public int hashCode() {
             return Objects.hash(
-                    allowUncommitedChanges,
+                    allowUncommittedChanges,
                     allowUntrackedBranches,
                     allowUntrackedFiles,
                     checkAllBranches,
