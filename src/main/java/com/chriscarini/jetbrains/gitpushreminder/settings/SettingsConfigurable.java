@@ -22,7 +22,9 @@ public class SettingsConfigurable implements Configurable {
     private final JPanel mainPanel = new JBPanel<>();
 
     private final JBCheckBox checkAllBranchesField = new JBCheckBox();
-    private final JBCheckBox countUntrackedBranchAsPushedField = new JBCheckBox();
+    private final JBCheckBox allowUncommittedChangesField = new JBCheckBox();
+    private final JBCheckBox allowUntrackedBranchField = new JBCheckBox();
+    private final JBCheckBox allowUntrackedFilesField = new JBCheckBox();
     private final JBCheckBox showDialogField = new JBCheckBox();
     private final JBCheckBox showSwitchDialogField = new JBCheckBox();
 
@@ -44,8 +46,14 @@ public class SettingsConfigurable implements Configurable {
                 .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.check.all.branches.label"), checkAllBranchesField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.check.all.branches.tooltip"))
                 .addSeparator()
-                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.allow.untracked.branches.label"), countUntrackedBranchAsPushedField)
+                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.allow.uncommitted.changes.label"), allowUncommittedChangesField)
+                .addTooltip(PluginMessages.get("git.push.reminder.settings.allow.uncommitted.changes.tooltip"))
+                .addSeparator()
+                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.allow.untracked.branches.label"), allowUntrackedBranchField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.allow.untracked.branches.tooltip"))
+                .addSeparator()
+                .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.allow.untracked.files.label"), allowUntrackedFilesField)
+                .addTooltip(PluginMessages.get("git.push.reminder.settings.allow.untracked.files.tooltip"))
                 .addSeparator()
                 .addLabeledComponent(PluginMessages.get("git.push.reminder.settings.show.dialog.label"), showDialogField)
                 .addTooltip(PluginMessages.get("git.push.reminder.settings.show.dialog.tooltip"))
@@ -86,7 +94,9 @@ public class SettingsConfigurable implements Configurable {
         final SettingsManager.GitPushReminderSettingsState settingsState = new SettingsManager.GitPushReminderSettingsState();
 
         settingsState.checkAllBranches = checkAllBranchesField.isSelected();
-        settingsState.countUntrackedBranchAsPushed = countUntrackedBranchAsPushedField.isSelected();
+        settingsState.allowUncommittedChanges = allowUncommittedChangesField.isSelected();
+        settingsState.allowUntrackedBranches = allowUntrackedBranchField.isSelected();
+        settingsState.allowUntrackedFiles = allowUntrackedFilesField.isSelected();
         settingsState.showDialog = showDialogField.isSelected();
         settingsState.showSwitchDialog = showSwitchDialogField.isSelected();
 
@@ -111,7 +121,9 @@ public class SettingsConfigurable implements Configurable {
         }
 
         checkAllBranchesField.setSelected(settings.checkAllBranches);
-        countUntrackedBranchAsPushedField.setSelected(settings.countUntrackedBranchAsPushed);
+        allowUncommittedChangesField.setSelected(settings.allowUncommittedChanges);
+        allowUntrackedBranchField.setSelected(settings.allowUntrackedBranches);
+        allowUntrackedFilesField.setSelected(settings.allowUntrackedFiles);
         showDialogField.setSelected(settings.showDialog);
         showSwitchDialogField.setSelected(settings.showSwitchDialog);
     }
