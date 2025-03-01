@@ -7,7 +7,6 @@
 ### Added
 
 ### Changed
-- Upgrading IntelliJ from 2024.3.3 to 2024.3.4
 
 ### Deprecated
 
@@ -16,6 +15,12 @@
 ### Fixed
 
 ### Security
+
+## [2.2.7] - 2025-03-01
+
+### Changed
+
+- Upgrading IntelliJ from 2024.3.3 to 2024.3.4
 
 ## [2.2.6] - 2025-02-21
 
@@ -295,7 +300,8 @@
 
 - Initial release.
 
-[Unreleased]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v2.2.6...HEAD
+[Unreleased]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v2.2.7...HEAD
+[2.2.7]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v2.2.6...v2.2.7
 [2.2.6]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v2.2.5...v2.2.6
 [2.2.5]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v2.2.4...v2.2.5
 [2.2.4]: https://github.com/ChrisCarini/git-push-reminder-jetbrains-plugin/compare/v2.2.3...v2.2.4
