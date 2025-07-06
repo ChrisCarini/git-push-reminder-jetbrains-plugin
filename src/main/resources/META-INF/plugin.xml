@@ -19,7 +19,9 @@
             serviceImplementation="com.chriscarini.jetbrains.gitpushreminder.settings.SettingsManager"/>
 
     <applicationConfigurable
-        instance="com.chriscarini.jetbrains.gitpushreminder.settings.SettingsConfigurable"/>
+        instance="com.chriscarini.jetbrains.gitpushreminder.settings.SettingsConfigurable"
+        bundle="messages.gitPushReminder"
+        key="git.push.reminder.settings.display.name"/>
 
   </extensions>
   <projectListeners>
