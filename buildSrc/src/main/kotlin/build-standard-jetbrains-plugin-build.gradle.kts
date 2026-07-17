@@ -13,7 +13,6 @@ fun environment(key: String): Provider<String> = providers.environmentVariable(k
 fun extra(key: String): String = project.ext.get(key) as String
 
 val javaVersion = properties("javaVersion")
-val platformBundledModules = providers.gradleProperty("platformBundledModules").orElse("")
 val platformBundledPlugins = providers.gradleProperty("platformBundledPlugins")
 val platformBundledModules = providers.gradleProperty("platformBundledModules")
 val platformPlugins = providers.gradleProperty("platformPlugins")
